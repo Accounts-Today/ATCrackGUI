@@ -1,10 +1,10 @@
-package today.accounts.cracker.gui.options
+package today.accounts.cracker.standalone.options
 
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
-import today.accounts.cracker.gui.options.api.Option
-import today.accounts.cracker.gui.util.TextFileChooser
+import today.accounts.cracker.standalone.options.api.Option
+import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
 
 /**

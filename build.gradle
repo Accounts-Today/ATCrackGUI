@@ -6,14 +6,17 @@ buildscript {
 
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.0'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 
@@ -23,9 +26,10 @@ repositories {
 
 }
 jar {
-    archiveName = "ATCrackGUIjar"
+    destinationDir = file('../dist')
+    archiveName = "ATCrackGUId.jar"
     manifest {
-        attributes('Class-Path': 'config/deps.jar', 'Main-Class': 'today.accounts.cracker.gui.Main')
+        attributes('Main-Class': 'today.accounts.cracker.standalone.Main')
     }
 }
 dependencies {
@@ -34,6 +38,10 @@ dependencies {
     compile 'com.github.uphy:javafx-console:ce'
 
 }
+shadowJar {
+    destinationDir = file('../dist')
+    archiveName = "ATCrackGUI.jar"
+}
 
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -41,3 +49,4 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+sourceSets.main.resources.srcDir("src/main/resources")

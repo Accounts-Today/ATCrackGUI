@@ -1,8 +1,8 @@
-package today.accounts.cracker.gui.options
+package today.accounts.cracker.standalone.options
 
 import javafx.scene.Node
 import javafx.scene.control.TextField
-import today.accounts.cracker.gui.options.api.Option
+import today.accounts.cracker.standalone.options.api.Option
 
 /**
  * Created for Accounts Today. All rights reserved/retained
@@ -35,7 +35,7 @@ class KeyOption : Option<String>
 
     override fun line(): String
     {
-        return "-k " + node.text
+        return "-k \"${node.text}\""
     }
 
     override fun init(n: List<Node>)

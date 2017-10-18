@@ -1,4 +1,4 @@
-package today.accounts.cracker.gui
+package today.accounts.cracker.standalone
 
 import javafx.application.Application
 import javafx.event.EventHandler
@@ -9,9 +9,10 @@ import javafx.scene.control.Alert
 import javafx.scene.control.Button
 import javafx.scene.image.Image
 import javafx.scene.layout.AnchorPane
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import jp.uphy.javafx.console.ConsoleView
-import today.accounts.cracker.gui.options.*
+import today.accounts.cracker.standalone.options.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.*
@@ -40,10 +41,10 @@ class GUI : Application()
 
     override fun start(primaryStage: Stage)
     {
-        val loader = FXMLLoader(Main::class.java.classLoader.getResource("gui.fxml"));
+        val loader = FXMLLoader(Main::class.java.classLoader.getResource("GUI.fxml"));
         loader.setController(this)
         primaryStage.title = "Accounts Today Cracker GUI | By: Jp78 | Version: $version";
-        primaryStage.icons.add(Image("https://avatars0.githubusercontent.com/u/31424010?s=460&v=4"))
+        primaryStage.icons.add(Image("https://avatars2.githubusercontent.com/u/32889071?s=200&v=4"))
         primaryStage.isResizable = false;
         val root: AnchorPane = loader.load()
         val scene = Scene(root, root.prefWidth, root.prefHeight);
@@ -53,6 +54,7 @@ class GUI : Application()
             System.exit(0)
         }
         options.forEach { it.init(root.children) }
+        primaryStage.show()
     }
 
     fun start()
@@ -60,6 +62,7 @@ class GUI : Application()
         if (start.text == "Stop")
         {
             running?.destroy();
+            System.exit(0)
         }
         else
         {
@@ -84,7 +87,9 @@ class GUI : Application()
             alert.headerText = "Started!"
             alert.contentText = "Program started!"
             alert.show();
-            this.running = ProgramStarter.start(args.toArray() as Array<String>)
+            this.running = ProgramStarter.start(args.toTypedArray())
+            start.text = "Stop";
+            startConsoleOutput()
         }
     }
 
@@ -96,14 +101,12 @@ class GUI : Application()
             {
                 while (true)
                 {
-                    val reader = BufferedReader(InputStreamReader(running?.inputStream))
+                    val reader = BufferedReader(InputStreamReader(running!!.inputStream))
 
-                    var line: String? = null;
-
-                    while (line != null)
+                    while (true)
                     {
+                        val line = reader.readLine() ?: continue
                         console.out.print(line + "\n")
-                        line = reader.readLine();
                     }
                 }
             }
@@ -113,5 +116,38 @@ class GUI : Application()
             }
 
         }
+        val error = Thread {
+            try
+            {
+                while (true)
+                {
+                    val reader = BufferedReader(InputStreamReader(running!!.errorStream))
+
+                    while (true)
+                    {
+                        val line = reader.readLine() ?: continue
+                        console.out.print(line + "\n")
+                    }
+                }
+            }
+            catch (e: Exception)
+            {
+                e.printStackTrace()
+            }
+
+        }
+        createSceneAndStage(console).show()
+        thread.isDaemon = true;
+        error.isDaemon = true;
+        thread.start();
+        error.start()
+    }
+
+    fun createSceneAndStage(root: BorderPane) : Stage
+    {
+        val stage = Stage()
+        stage.title = "Cracker Output"
+        stage.scene = Scene(root,root.prefWidth,root.prefHeight)
+        return stage;
     }
 }

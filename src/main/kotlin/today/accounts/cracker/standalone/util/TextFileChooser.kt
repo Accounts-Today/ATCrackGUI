@@ -1,4 +1,4 @@
-package today.accounts.cracker.gui.util
+package today.accounts.cracker.standalone.util
 
 import javafx.stage.FileChooser
 

@@ -43,7 +43,7 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="usernames" layoutX="321.0" layoutY="83.0" />
+      <TextField fx:id="username" layoutX="321.0" layoutY="83.0" />
       <Text layoutX="351.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usernames">
          <font>
             <Font size="18.0" />

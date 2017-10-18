@@ -1,4 +1,4 @@
-package today.accounts.cracker.gui.options.api
+package today.accounts.cracker.standalone.options.api
 
 import javafx.scene.Node
 
@@ -49,7 +49,7 @@ interface Option<out T>
         return nodes.stream().filter { n ->
             if (n.id == null) return@filter false
             return@filter n.id == name
-        }.findFirst().orElseThrow { NullPointerException(name + "does not exist!") } as T
+        }.findFirst().orElseThrow { NullPointerException(name + " does not exist!") } as T
 
     }
 }

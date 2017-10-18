@@ -1,10 +1,10 @@
-package today.accounts.cracker.gui.options
+package today.accounts.cracker.standalone.options
 
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
-import today.accounts.cracker.gui.options.api.Option
-import today.accounts.cracker.gui.util.TextFileChooser
+import today.accounts.cracker.standalone.options.api.Option
+import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
 
 /**
@@ -12,12 +12,13 @@ import java.io.File
  * @author Jp78 (jp78.me)
  * @since Tuesday, October 2017
  */
-class FinishedOption : Option<String>
+class UsernameOption : Option<String>
 {
     lateinit var node : TextField;
-    override fun required(): Boolean
+
+    override fun error(): String
     {
-        return true;
+        throw IllegalStateException(); //This should never happen!
     }
 
     override fun isPresent(): Boolean
@@ -25,14 +26,9 @@ class FinishedOption : Option<String>
         return File(node.text).exists()
     }
 
-    override fun error(): String
-    {
-        return "Your MUST supply a file to write the cracked alts to!"
-    }
-
     override fun line(): String
     {
-        return "-f " + node.text;
+        return "-u ${node.text}"
     }
 
     override fun value(): String
@@ -40,14 +36,18 @@ class FinishedOption : Option<String>
         return node.text;
     }
 
+    override fun required(): Boolean
+    {
+        return false;
+    }
+
     override fun init(n: List<Node>)
     {
-        this.node = find(n,"finished")
+        this.node = find(n, "username");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick a file to output to.").showOpenDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick an output file for usernames.").showOpenDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
     }
-
 }
