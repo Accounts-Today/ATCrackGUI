@@ -11,8 +11,7 @@ import javafx.scene.image.Image
 import javafx.scene.layout.AnchorPane
 import javafx.stage.Stage
 import jp.uphy.javafx.console.ConsoleView
-import today.accounts.cracker.gui.options.CombosOption
-import today.accounts.cracker.gui.options.ProxyOption
+import today.accounts.cracker.gui.options.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.*
@@ -29,8 +28,14 @@ class GUI : Application()
     @FXML
     lateinit var start: Button;
     val options = listOf(
+            BackconnectOption(),
             CombosOption(),
-            ProxyOption()
+            FinishedOption(),
+            KeyOption(),
+            NotifyOption(),
+            ProxyOption(),
+            UsernameOption()
+
     )
 
     override fun start(primaryStage: Stage)

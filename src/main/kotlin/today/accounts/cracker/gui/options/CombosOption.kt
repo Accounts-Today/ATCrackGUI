@@ -4,7 +4,7 @@ import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
 import today.accounts.cracker.gui.options.api.Option
-import today.accounts.cracker.gui.utils.TextFileChooser
+import today.accounts.cracker.gui.util.TextFileChooser
 import java.io.File
 
 /**
