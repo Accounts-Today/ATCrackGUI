@@ -28,7 +28,7 @@ class UsernameOption : Option<String>
 
     override fun line(): String
     {
-        return "-u ${node.text}"
+        return "-u \"${node.text}\""
     }
 
     override fun value(): String

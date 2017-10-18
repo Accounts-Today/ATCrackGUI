@@ -28,7 +28,7 @@ class ProxyOption : Option<String>
 
     override fun line(): String
     {
-        return "-p ${node.text}"
+        return "-p \"${node.text}\""
     }
 
     override fun value(): String

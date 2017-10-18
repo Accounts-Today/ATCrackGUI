@@ -32,7 +32,7 @@ class FinishedOption : Option<String>
 
     override fun line(): String
     {
-        return "-f " + node.text;
+        return "-f \"${node.text}\""
     }
 
     override fun value(): String

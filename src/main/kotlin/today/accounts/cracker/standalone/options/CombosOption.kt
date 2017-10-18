@@ -28,7 +28,7 @@ class CombosOption : Option<String>
 
     override fun line(): String
     {
-        return "-c ${node.text}"
+        return "-c \"${node.text}\""
     }
 
     override fun value(): String

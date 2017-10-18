@@ -13,8 +13,9 @@ object ProgramStarter
 
     fun start(args : Array<String>): Process
     {
-        val start = StringBuilder(File(ProgramStarter.javaClass.protectionDomain.codeSource.location.toURI()).absolutePath + File.pathSeparator + PATH);
+        val start = StringBuilder("\"${File(ProgramStarter.javaClass.protectionDomain.codeSource.location.toURI()).parentFile.absolutePath}" + File.separator + PATH + "\"");
         for (arg in args) start.append(" $arg")
+        println("Start args: java -jar ${start.toString()}");
         return Runtime.getRuntime().exec("java -jar " + start.toString())
     }
 }
