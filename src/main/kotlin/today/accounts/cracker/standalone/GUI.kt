@@ -157,6 +157,9 @@ class GUI : Application()
     {
         val stage = Stage()
         stage.title = "Cracker Output"
+        stage.onCloseRequest = EventHandler {
+            System.exit(0)
+        }
         val scene = Scene(root, root.prefWidth, root.prefHeight)
         scene.stylesheets.add(GUI::class.java.classLoader.getResource("style.css").toString())
         stage.scene = scene

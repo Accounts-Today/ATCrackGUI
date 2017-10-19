@@ -26,7 +26,7 @@ repositories {
 
 }
 jar {
-    destinationDir = file('../dist')
+    destinationDir = file('../cracker/dist')
     archiveName = "ATCrackGUId.jar"
     manifest {
         attributes('Main-Class': 'today.accounts.cracker.standalone.Main')
@@ -39,7 +39,7 @@ dependencies {
 
 }
 shadowJar {
-    destinationDir = file('../dist')
+    destinationDir = file('../cracker/dist') //Customized for JP's usage. DO NOT DO THIS
     archiveName = "ATCrackGUI.jar"
 }
 
