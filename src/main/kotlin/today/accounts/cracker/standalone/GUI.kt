@@ -14,6 +14,7 @@ import javafx.stage.Stage
 import jp.uphy.javafx.console.ConsoleView
 import today.accounts.cracker.standalone.options.*
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStreamReader
 import java.util.*
 
@@ -41,6 +42,15 @@ class GUI : Application()
 
     override fun start(primaryStage: Stage)
     {
+        if (!File(ProgramStarter.PATH).exists())
+        {
+            val alert = Alert(Alert.AlertType.ERROR);
+            alert.title = "ATCrackGUI"
+            alert.headerText = "Could not find Cracker.jar!"
+            alert.contentText = "Could not find Cracker.jar! Please ensure this and Cracker.jar are in the same directory!"
+            alert.showAndWait()
+            System.exit(1)
+        }
         val loader = FXMLLoader(Main::class.java.classLoader.getResource("GUI.fxml"));
         loader.setController(this)
         primaryStage.title = "Accounts Today Cracker GUI | By: Jp78 | Version: $version";
@@ -143,11 +153,11 @@ class GUI : Application()
         error.start()
     }
 
-    fun createSceneAndStage(root: BorderPane) : Stage
+    fun createSceneAndStage(root: BorderPane): Stage
     {
         val stage = Stage()
         stage.title = "Cracker Output"
-        val scene = Scene(root,root.prefWidth,root.prefHeight)
+        val scene = Scene(root, root.prefWidth, root.prefHeight)
         scene.stylesheets.add(GUI::class.java.classLoader.getResource("style.css").toString())
         stage.scene = scene
         return stage;
