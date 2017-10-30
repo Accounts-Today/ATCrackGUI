@@ -43,18 +43,18 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="username" layoutX="321.0" layoutY="83.0" />
+      <TextField fx:id="username" layoutX="320.0" layoutY="83.0" />
       <Text layoutX="351.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usernames">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <CheckBox fx:id="backconnect" layoutX="335.0" layoutY="129.0" mnemonicParsing="false" text="BackConnect">
+      <CheckBox fx:id="backconnect" layoutX="334.0" layoutY="196.0" mnemonicParsing="false" text="BackConnect">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="notify" layoutX="335.0" layoutY="167.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Notify">
+      <CheckBox fx:id="notify" layoutX="334.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Notify">
          <font>
             <Font size="16.0" />
          </font>
@@ -64,5 +64,11 @@
              <Font name="System Bold" size="22.0" />
          </font>
       </Text>
+      <Text layoutX="338.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Accuracy">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="321.0" layoutY="153.0" />
    </children>
 </AnchorPane>

@@ -36,6 +36,7 @@ class GUI : Application()
             KeyOption(),
             NotifyOption(),
             ProxyOption(),
+            FullAccuracyOption(),
             UsernameOption()
 
     )
