@@ -69,6 +69,6 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="321.0" layoutY="153.0" />
+      <TextField fx:id="high" layoutX="321.0" layoutY="153.0" />
    </children>
 </AnchorPane>
