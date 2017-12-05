@@ -3,6 +3,8 @@ package today.accounts.cracker.standalone.options
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
+import today.accounts.cracker.standalone.config.Config
+import today.accounts.cracker.standalone.config.Config.get
 import today.accounts.cracker.standalone.options.api.Option
 import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
@@ -28,6 +30,7 @@ class ProxyOption : Option<String>
 
     override fun line(): String
     {
+        Config.put("proxy", node.text)
         return "-p \"${node.text}\""
     }
 
@@ -48,6 +51,10 @@ class ProxyOption : Option<String>
         node.onMouseClicked = EventHandler {
             val file = TextFileChooser.create("Pick a proxy list.").showOpenDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
+        }
+        if (get("proxy") != null)
+        {
+            node.text = Config.get("proxy");
         }
     }
 }

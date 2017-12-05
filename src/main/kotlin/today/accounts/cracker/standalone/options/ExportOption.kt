@@ -3,7 +3,6 @@ package today.accounts.cracker.standalone.options
 import javafx.scene.Node
 import javafx.scene.control.CheckBox
 import today.accounts.cracker.standalone.config.Config
-import today.accounts.cracker.standalone.config.Config.get
 import today.accounts.cracker.standalone.options.api.Option
 
 /**
@@ -11,7 +10,7 @@ import today.accounts.cracker.standalone.options.api.Option
  * @author Jp78 (jp78.me)
  * @since Tuesday, October 2017
  */
-class BackconnectOption : Option<Boolean>
+class ExportOption : Option<Boolean>
 {
     lateinit var node : CheckBox;
 
@@ -22,8 +21,8 @@ class BackconnectOption : Option<Boolean>
 
     override fun line(): String
     {
-        Config.put("backconnect", node.isSelected.toString())
-        return "-bc"
+        Config.put("export", node.isSelected.toString())
+        return "-e"
     }
 
     override fun error(): String
@@ -42,7 +41,7 @@ class BackconnectOption : Option<Boolean>
     }
     override fun init(n: List<Node>)
     {
-        node = find(n,"backconnect")
-        node.isSelected = get("backconnect")?.equals("true") ?: false;
+        node = find(n,"export")
+        node.isSelected = Config.get("export")?.equals("true") ?: false;
     }
 }

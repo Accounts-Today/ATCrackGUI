@@ -52,4 +52,15 @@ interface Option<out T>
         }.findFirst().orElseThrow { NullPointerException(name + " does not exist!") } as T
 
     }
+    companion object
+    {
+        fun <T : Node> find(nodes : List<Node>, name: String): T
+        {
+            return nodes.stream().filter { n ->
+                if (n.id == null) return@filter false
+                return@filter n.id == name
+            }.findFirst().orElseThrow { NullPointerException(name + " does not exist!") } as T
+
+        }
+    }
 }

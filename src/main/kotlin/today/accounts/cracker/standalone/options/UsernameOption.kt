@@ -3,6 +3,8 @@ package today.accounts.cracker.standalone.options
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
+import today.accounts.cracker.standalone.config.Config.get
+import today.accounts.cracker.standalone.config.Config.put
 import today.accounts.cracker.standalone.options.api.Option
 import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
@@ -28,6 +30,8 @@ class UsernameOption : Option<String>
 
     override fun line(): String
     {
+        put("username",node.text)
+
         return "-u \"${node.text}\""
     }
 
@@ -48,6 +52,10 @@ class UsernameOption : Option<String>
         node.onMouseClicked = EventHandler {
             val file = TextFileChooser.create("Pick an output file for usernames.").showOpenDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
+        }
+        if (get("username") != null)
+        {
+            node.text = get("username");
         }
     }
 }

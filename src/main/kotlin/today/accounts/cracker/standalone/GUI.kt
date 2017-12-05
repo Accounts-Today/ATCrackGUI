@@ -7,15 +7,20 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.scene.control.Alert
 import javafx.scene.control.Button
+import javafx.scene.control.Hyperlink
 import javafx.scene.image.Image
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
 import jp.uphy.javafx.console.ConsoleView
+import today.accounts.cracker.standalone.config.Config
 import today.accounts.cracker.standalone.options.*
+import today.accounts.cracker.standalone.options.api.Option
+import java.awt.Desktop
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStreamReader
+import java.net.URI
 import java.util.*
 
 /**
@@ -25,7 +30,7 @@ import java.util.*
  */
 class GUI : Application()
 {
-    val version = 0;
+    val version = 1.8;
     var running: Process? = null;
     @FXML
     lateinit var start: Button;
@@ -37,6 +42,8 @@ class GUI : Application()
             NotifyOption(),
             ProxyOption(),
             FullAccuracyOption(),
+            MFAOption(),
+            SFAOption(),
             UsernameOption()
 
     )
@@ -66,6 +73,10 @@ class GUI : Application()
         }
         options.forEach { it.init(root.children) }
         primaryStage.show()
+        val link : Hyperlink = Option.find(root.children,"link")
+        link.onAction = EventHandler {
+            Desktop.getDesktop().browse(URI("https://atcrack.io/knowledge-base"))
+        }
     }
 
     fun start()
@@ -93,6 +104,7 @@ class GUI : Application()
                 }
                 if (o.isPresent()) args.add(o.line())
             }
+            Config.save();
             val alert = Alert(Alert.AlertType.CONFIRMATION)
             alert.title = "AT Crack GUI"
             alert.headerText = "Started!"

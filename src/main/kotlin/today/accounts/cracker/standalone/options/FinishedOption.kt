@@ -3,6 +3,8 @@ package today.accounts.cracker.standalone.options
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
+import today.accounts.cracker.standalone.config.Config
+import today.accounts.cracker.standalone.config.Config.get
 import today.accounts.cracker.standalone.options.api.Option
 import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
@@ -32,6 +34,7 @@ class FinishedOption : Option<String>
 
     override fun line(): String
     {
+        Config.put("finished", node.text)
         return "-f \"${node.text}\""
     }
 
@@ -47,6 +50,10 @@ class FinishedOption : Option<String>
         node.onMouseClicked = EventHandler {
             val file = TextFileChooser.create("Pick a file to output to.").showOpenDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
+        }
+        if (get("finished") != null)
+        {
+            node.text = get("finished");
         }
     }
 

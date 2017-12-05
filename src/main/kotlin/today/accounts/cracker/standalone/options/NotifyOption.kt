@@ -2,6 +2,8 @@ package today.accounts.cracker.standalone.options
 
 import javafx.scene.Node
 import javafx.scene.control.CheckBox
+import today.accounts.cracker.standalone.config.Config
+import today.accounts.cracker.standalone.config.Config.get
 import today.accounts.cracker.standalone.options.api.Option
 
 /**
@@ -20,6 +22,7 @@ class NotifyOption : Option<Boolean>
 
     override fun line(): String
     {
+        Config.put("notify", node.isSelected.toString())
         return "-n"
     }
 
@@ -40,5 +43,7 @@ class NotifyOption : Option<Boolean>
     override fun init(n: List<Node>)
     {
         node = find(n,"notify")
+        node.isSelected = get("notify")?.equals("true") ?: false;
+
     }
 }

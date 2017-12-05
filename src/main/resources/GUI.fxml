@@ -2,14 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="start" layoutX="168.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#start" prefHeight="61.0" prefWidth="150.0" text="Start">
+      <Button fx:id="start" layoutX="168.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#start" prefHeight="61.0" prefWidth="150.0" text="Start">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -25,7 +26,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="proxies" layoutX="18.0" layoutY="49.0" />
+      <TextField fx:id="proxies" layoutX="19.0" layoutY="48.0" />
       <TextField fx:id="combos" layoutX="19.0" layoutY="116.0" />
       <Text layoutX="59.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Combos">
          <font>
@@ -49,12 +50,12 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <CheckBox fx:id="backconnect" layoutX="334.0" layoutY="196.0" mnemonicParsing="false" text="BackConnect">
+      <CheckBox fx:id="backconnect" layoutX="19.0" layoutY="345.0" mnemonicParsing="false" text="BackConnect" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="notify" layoutX="334.0" layoutY="223.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Notify">
+      <CheckBox fx:id="notify" layoutX="367.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Notify" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -70,5 +71,44 @@
          </font>
       </Text>
       <TextField fx:id="high" layoutX="321.0" layoutY="153.0" />
+      <TextField fx:id="sfa" layoutX="320.0" layoutY="258.0" />
+      <Text layoutX="329.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semi-Full Access" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mail Full Access" textAlignment="CENTER" wrappingWidth="136.0000019967556">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="mfa" layoutX="18.0" layoutY="258.0" />
+      <CheckBox fx:id="export" layoutX="367.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Export">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="export" layoutX="19.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="No Check" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </CheckBox>
+      <Text layoutX="207.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Made By Jp78" textAlignment="CENTER">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="187.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thread Count" textAlignment="CENTER" wrappingWidth="113.72167889773846">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <TextField fx:id="threads" alignment="CENTER" layoutX="214.0" layoutY="258.0" prefHeight="25.0" prefWidth="57.0" text="-1" />
+      <Text layoutX="187.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WARNING: DO NOT USE IF NOT AN ADVANCED USER" textAlignment="CENTER" wrappingWidth="121.00000295042992">
+         <font>
+            <Font name="System Bold Italic" size="9.0" />
+         </font>
+      </Text>
+      <Hyperlink layoutX="175.0" layoutY="58.0" prefHeight="75.0" prefWidth="136.0" text="For information on the options, please visit https://atcrack.io/knowledge-base" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>
