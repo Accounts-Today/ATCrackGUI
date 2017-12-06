@@ -109,6 +109,6 @@
             <Font name="System Bold Italic" size="9.0" />
          </font>
       </Text>
-      <Hyperlink layoutX="175.0" layoutY="58.0" prefHeight="75.0" prefWidth="136.0" text="For information on the options, please visit https://atcrack.io/knowledge-base" textAlignment="CENTER" wrapText="true" />
+      <Hyperlink fx:id="link" layoutX="175.0" layoutY="58.0" prefHeight="75.0" prefWidth="136.0" text="For information on the options, please visit https://atcrack.io/knowledge-base" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

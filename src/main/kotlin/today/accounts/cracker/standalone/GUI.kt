@@ -30,7 +30,7 @@ import java.util.*
  */
 class GUI : Application()
 {
-    val version = 1.8;
+    val version = 1.10;
     var running: Process? = null;
     @FXML
     lateinit var start: Button;
