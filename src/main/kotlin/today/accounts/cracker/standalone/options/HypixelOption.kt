@@ -3,8 +3,8 @@ package today.accounts.cracker.standalone.options
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
+import today.accounts.cracker.standalone.config.Config
 import today.accounts.cracker.standalone.config.Config.get
-import today.accounts.cracker.standalone.config.Config.put
 import today.accounts.cracker.standalone.options.api.Option
 import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
@@ -14,13 +14,13 @@ import java.io.File
  * @author Jp78 (jp78.me)
  * @since Tuesday, October 2017
  */
-class UsernameOption : Option<String>
+class HypixelOption : Option<String>
 {
-    lateinit var node : TextField;
+    lateinit var node: TextField;
 
     override fun error(): String
     {
-        throw IllegalStateException(); //This should never happen!
+        return "You MUST supply combos!"
     }
 
     override fun isPresent(): Boolean
@@ -30,9 +30,8 @@ class UsernameOption : Option<String>
 
     override fun line(): String
     {
-        put("username",node.text)
-
-        return "-u \"${node.text}\""
+        Config.put("hypixel", node.text)
+        return "-hypixel \"${node.text}\""
     }
 
     override fun value(): String
@@ -47,15 +46,15 @@ class UsernameOption : Option<String>
 
     override fun init(n: List<Node>)
     {
-        this.node = find(n, "username");
+        this.node = find(n, "hypixel");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick an output file for usernames.").showSaveDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick a file for hypixel ranks to be exported to.").showSaveDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
-        if (get("username") != null)
+        if (get("hypixel") != null)
         {
-            node.text = get("username");
+            node.text = get("hypixel");
         }
     }
 }

@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="start" layoutX="168.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#start" prefHeight="61.0" prefWidth="150.0" text="Start">
+      <Button fx:id="start" layoutX="179.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#start" prefHeight="69.0" prefWidth="136.0" text="Start">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="61.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finished">
+      <Text layoutX="60.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finished">
          <font>
             <Font size="18.0" />
          </font>
@@ -50,12 +50,12 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <CheckBox fx:id="backconnect" layoutX="19.0" layoutY="345.0" mnemonicParsing="false" text="BackConnect" textAlignment="CENTER">
+      <CheckBox fx:id="backconnect" layoutX="19.0" layoutY="485.0" mnemonicParsing="false" text="BackConnect" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="notify" layoutX="367.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Notify" textAlignment="CENTER">
+      <CheckBox fx:id="notify" layoutX="321.0" layoutY="485.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" text="Notify" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -83,12 +83,7 @@
          </font>
       </Text>
       <TextField fx:id="mfa" layoutX="18.0" layoutY="258.0" />
-      <CheckBox fx:id="export" layoutX="367.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Export">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="export" layoutX="19.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" text="No Check" textAlignment="CENTER">
+      <CheckBox fx:id="export" layoutX="19.0" layoutY="444.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="161.0" text="No Mojang Check" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
@@ -110,5 +105,33 @@
          </font>
       </Text>
       <Hyperlink fx:id="link" layoutX="175.0" layoutY="58.0" prefHeight="75.0" prefWidth="136.0" text="For information on the options, please visit https://atcrack.io/knowledge-base" textAlignment="CENTER" wrapText="true" />
+      <CheckBox fx:id="sp" layoutX="321.0" layoutY="444.0" mnemonicParsing="false" text="Skip Proxy Check" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="-598.0" layoutY="329.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="unmig" layoutX="123.0" layoutY="397.0" mnemonicParsing="false" text="UNMIGRATED CRACKER MODE" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </CheckBox>
+      <Text fx:id="unmig" layoutX="113.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please check the knowledge base for how this works">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="38.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hypixel Ranks" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="hypixel" layoutX="18.0" layoutY="334.0" />
+      <Text layoutX="340.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Optifine Capes">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="optifine" layoutX="320.0" layoutY="334.0" />
    </children>
 </AnchorPane>

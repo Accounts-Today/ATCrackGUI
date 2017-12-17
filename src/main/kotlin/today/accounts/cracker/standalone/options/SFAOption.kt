@@ -49,7 +49,7 @@ class SFAOption : Option<String>
         this.node = find(n, "sfa");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick an output file for sfa alts.").showOpenDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick an output file for sfa alts.").showSaveDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
         if (Config.get("sfa") != null)

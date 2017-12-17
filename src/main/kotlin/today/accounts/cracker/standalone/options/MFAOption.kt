@@ -49,7 +49,7 @@ class MFAOption : Option<String>
         this.node = find(n, "mfa");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick an output file for MFA alts.").showOpenDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick an output file for MFA alts.").showSaveDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
         if (Config.get("mfa") != null)

@@ -48,7 +48,7 @@ class FinishedOption : Option<String>
         this.node = find(n,"finished")
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick a file to output to.").showOpenDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick a file to output to.").showSaveDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
         if (get("finished") != null)

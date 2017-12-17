@@ -30,7 +30,7 @@ import java.util.*
  */
 class GUI : Application()
 {
-    val version = 1.10;
+    val version = "2.0";
     var running: Process? = null;
     @FXML
     lateinit var start: Button;
@@ -44,7 +44,11 @@ class GUI : Application()
             FullAccuracyOption(),
             MFAOption(),
             SFAOption(),
-            UsernameOption()
+            UsernameOption(),
+            OptifineOption(),
+            HypixelOption(),
+            SkipProxyOption(),
+            UnmigOption()
 
     )
 
@@ -73,7 +77,7 @@ class GUI : Application()
         }
         options.forEach { it.init(root.children) }
         primaryStage.show()
-        val link : Hyperlink = Option.find(root.children,"link")
+        val link: Hyperlink = Option.find(root.children, "link")
         link.onAction = EventHandler {
             Desktop.getDesktop().browse(URI("https://atcrack.io/knowledge-base"))
         }
