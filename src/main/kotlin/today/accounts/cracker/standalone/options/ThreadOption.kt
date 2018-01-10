@@ -5,7 +5,6 @@ import javafx.scene.control.TextField
 import today.accounts.cracker.standalone.config.Config
 import today.accounts.cracker.standalone.config.Config.get
 import today.accounts.cracker.standalone.options.api.Option
-import java.io.File
 
 /**
  * Created for Accounts Today. All rights reserved/retained
@@ -23,7 +22,7 @@ class ThreadOption : Option<String>
 
     override fun isPresent(): Boolean
     {
-        return File(node.text).exists()
+        return true;
     }
 
     override fun line(): String

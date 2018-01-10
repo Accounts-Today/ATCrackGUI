@@ -25,8 +25,10 @@ class HypixelOption : Option<String>
 
     override fun isPresent(): Boolean
     {
-        return File(node.text).exists()
-    }
+        val file = File(node.text)
+        if(!file.exists()) file.createNewFile();
+        node.text = file.absolutePath
+        return file.exists()    }
 
     override fun line(): String
     {

@@ -12,10 +12,10 @@ import javafx.scene.image.Image
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
-import jp.uphy.javafx.console.ConsoleView
 import today.accounts.cracker.standalone.config.Config
 import today.accounts.cracker.standalone.options.*
 import today.accounts.cracker.standalone.options.api.Option
+import today.accounts.cracker.standalone.util.Console
 import java.awt.Desktop
 import java.io.BufferedReader
 import java.io.File
@@ -30,7 +30,7 @@ import java.util.*
  */
 class GUI : Application()
 {
-    val version = "2.0";
+    val version = "3.0";
     var running: Process? = null;
     @FXML
     lateinit var start: Button;
@@ -38,7 +38,6 @@ class GUI : Application()
             BackconnectOption(),
             CombosOption(),
             FinishedOption(),
-            KeyOption(),
             NotifyOption(),
             ProxyOption(),
             FullAccuracyOption(),
@@ -48,7 +47,10 @@ class GUI : Application()
             OptifineOption(),
             HypixelOption(),
             SkipProxyOption(),
-            UnmigOption()
+            UnmigOption(),
+            NocheckOption(),
+            RebruteOption(),
+            MineconOption()
 
     )
 
@@ -115,6 +117,10 @@ class GUI : Application()
             alert.contentText = "Program started!"
             alert.show();
             this.running = ProgramStarter.start(args.toTypedArray())
+            Thread {
+                running!!.waitFor()
+                System.exit(0)
+            }.start()
             start.text = "Stop";
             startConsoleOutput()
         }
@@ -122,7 +128,8 @@ class GUI : Application()
 
     fun startConsoleOutput()
     {
-        val console = ConsoleView();
+    //    val console = ConsoleView();
+        Console.init()
         val thread = Thread {
             try
             {
@@ -133,7 +140,8 @@ class GUI : Application()
                     while (true)
                     {
                         val line = reader.readLine() ?: continue
-                        console.out.print(line + "\n")
+                       // console.out.print(line + "\n")
+                        Console.write(line)
                     }
                 }
             }
@@ -153,7 +161,9 @@ class GUI : Application()
                     while (true)
                     {
                         val line = reader.readLine() ?: continue
-                        console.out.print(line + "\n")
+                     //   console.out.print(line + "\n")
+                        Console.write(line)
+
                     }
                 }
             }
@@ -163,7 +173,7 @@ class GUI : Application()
             }
 
         }
-        createSceneAndStage(console).show()
+    //    createSceneAndStage(console).show()
         thread.isDaemon = true;
         error.isDaemon = true;
         thread.start();

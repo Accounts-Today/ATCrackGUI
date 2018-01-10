@@ -14,7 +14,7 @@ import java.io.File
  * @author Jp78 (jp78.me)
  * @since Tuesday, October 2017
  */
-class OptifineOption : Option<String>
+class MineconOption : Option<String>
 {
     lateinit var node: TextField;
 
@@ -33,8 +33,8 @@ class OptifineOption : Option<String>
 
     override fun line(): String
     {
-        Config.put("optifine", node.text)
-        return "-optifine \"${node.text}\""
+        Config.put("minecon", node.text)
+        return "-minecon \"${node.text}\""
     }
 
     override fun value(): String
@@ -49,15 +49,15 @@ class OptifineOption : Option<String>
 
     override fun init(n: List<Node>)
     {
-        this.node = find(n, "optifine");
+        this.node = find(n, "minecon");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick a file for optifine capes to be exported t.").showSaveDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick a file for minecon capes to be exported to.").showSaveDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
-        if (get("optifine") != null)
+        if (get("minecon") != null)
         {
-            node.text = get("optifine");
+            node.text = get("minecon");
         }
     }
 }

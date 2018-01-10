@@ -11,24 +11,24 @@ import today.accounts.cracker.standalone.options.api.Option
  * @author Jp78 (jp78.me)
  * @since Tuesday, October 2017
  */
-class KeyOption : Option<String>
+class RebruteOption : Option<String>
 {
     lateinit var node: TextField;
 
     override fun error(): String
     {
-        return "You must use a key!"
+        throw IllegalStateException("Well, this should never happen")
     }
 
     override fun isPresent(): Boolean
     {
-        return !node.text.isNullOrEmpty()
+        return true;
     }
 
     override fun line(): String
     {
-        Config.put("key", node.text)
-        return "-k \"${node.text}\""
+        Config.put("rebrutes", node.text)
+        return "-r \"${node.text}\""
     }
 
     override fun value(): String
@@ -38,15 +38,15 @@ class KeyOption : Option<String>
 
     override fun required(): Boolean
     {
-        return true;
+        return false;
     }
 
     override fun init(n: List<Node>)
     {
-        this.node = find(n, "key");
-        if (get("key") != null)
+        this.node = find(n, "rebrutes");
+        if (get("rebrutes") != null)
         {
-            node.text = get("key");
+            node.text = get("rebrutes");
         }
     }
 }
