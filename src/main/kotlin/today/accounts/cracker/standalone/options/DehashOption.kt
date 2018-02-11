@@ -4,7 +4,6 @@ import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.TextField
 import today.accounts.cracker.standalone.config.Config
-import today.accounts.cracker.standalone.config.Config.get
 import today.accounts.cracker.standalone.options.api.Option
 import today.accounts.cracker.standalone.util.TextFileChooser
 import java.io.File
@@ -12,37 +11,31 @@ import java.io.File
 /**
  * Created for Accounts Today. All rights reserved/retained
  * @author Jp78 (jp78.me)
- * @since Tuesday, October 2017
+ * @since Sunday, October 2017
  */
-class OptifineOption : Option<String>
+class DehashOption : Option<String>
 {
-    lateinit var node: TextField;
+    lateinit var node : TextField;
 
     override fun error(): String
     {
-        return "You MUST supply combos!"
+        return "Well this should never happen"
     }
 
     override fun isPresent(): Boolean
     {
-        if (!node.text.isNullOrEmpty())
-        {
-            val file = File(node.text)
-            if (!file.exists()) file.createNewFile();
-            node.text = file.absolutePath
-            return file.exists()
-        }
-        return false
+        return File(node.text).exists()
     }
 
     override fun line(): String
     {
-        Config.put("optifine", node.text)
-        return "-optifine \"${node.text}\""
+        Config.put("dehash", node.text)
+        return "-dehash \"${node.text}\""
     }
 
     override fun value(): String
     {
+
         return node.text;
     }
 
@@ -53,15 +46,15 @@ class OptifineOption : Option<String>
 
     override fun init(n: List<Node>)
     {
-        this.node = find(n, "optifine");
+        this.node = find(n,"dehash");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick a file for optifine capes to be exported t.").showSaveDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick an email list.").showOpenDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
-        if (get("optifine") != null)
+        if (Config.get("dehash") != null)
         {
-            node.text = get("optifine");
+            node.text = Config.get("dehash");
         }
     }
 }

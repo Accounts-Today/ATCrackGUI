@@ -34,15 +34,16 @@ class GUI : Application()
     var running: Process? = null;
     @FXML
     lateinit var start: Button;
-    val options = listOf(
+    val options = setOf(
             BackconnectOption(),
             CombosOption(),
             FinishedOption(),
+            SFAOption(),
             NotifyOption(),
             ProxyOption(),
             FullAccuracyOption(),
             MFAOption(),
-            SFAOption(),
+            BanCheckOption(),
             UsernameOption(),
             OptifineOption(),
             HypixelOption(),
@@ -50,7 +51,10 @@ class GUI : Application()
             UnmigOption(),
             NocheckOption(),
             RebruteOption(),
-            MineconOption()
+            MineconOption(),
+            ProxyScrapeOption(),
+            NFAOnlyOption()
+         //   DehashOption()
 
     )
 

@@ -24,10 +24,14 @@ class SFAOption : Option<String>
 
     override fun isPresent(): Boolean
     {
-        val file = File(node.text)
-        if(!file.exists()) file.createNewFile();
-        node.text = file.absolutePath
-        return file.exists()
+        if (!node.text.isNullOrEmpty())
+        {
+            val file = File(node.text)
+            if (!file.exists()) file.createNewFile();
+            node.text = file.absolutePath
+            return file.exists()
+        }
+        return false
     }
 
     override fun line(): String
@@ -52,7 +56,7 @@ class SFAOption : Option<String>
         this.node = find(n, "sfa");
         node.promptText = "Click here to open a file chooser!"
         node.onMouseClicked = EventHandler {
-            val file = TextFileChooser.create("Pick an output file for sfa alts.").showSaveDialog(node.scene.window) ?: return@EventHandler;
+            val file = TextFileChooser.create("Pick an output file for SFA alts.").showSaveDialog(node.scene.window) ?: return@EventHandler;
             node.text = file.absolutePath;
         }
         if (Config.get("sfa") != null)

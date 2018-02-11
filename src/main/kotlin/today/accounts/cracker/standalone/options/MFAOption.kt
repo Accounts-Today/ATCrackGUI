@@ -24,10 +24,14 @@ class MFAOption : Option<String>
 
     override fun isPresent(): Boolean
     {
-        val file = File(node.text)
-        if(!file.exists()) file.createNewFile();
-        node.text = file.absolutePath
-        return file.exists()
+        if (!node.text.isNullOrEmpty())
+        {
+            val file = File(node.text)
+            if (!file.exists()) file.createNewFile();
+            node.text = file.absolutePath
+            return file.exists()
+        }
+        return false
     }
 
     override fun line(): String
